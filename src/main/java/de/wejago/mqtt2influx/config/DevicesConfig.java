@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @Getter
 @Setter
 @ConfigurationProperties()
-@PropertySource(value = "classpath:mqtt2influx-configuration.yaml", factory = YamlPropertySourceFactory.class)
+@PropertySource(value = "classpath:mqtt2kafka-configuration.yaml", factory = YamlPropertySourceFactory.class)
 public class DevicesConfig {
     private List<Device> devices;
 }
