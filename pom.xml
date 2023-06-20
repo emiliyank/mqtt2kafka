@@ -9,12 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.wejago</groupId>
-    <artifactId>mqtt2influx</artifactId>
+    <artifactId>mqtt2kafka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mqtt2influx</name>
+    <name>mqtt2kafka</name>
     <description>
         Spring Boot project that allows you to monitor and analyze data from electricity consumption/generation.
-        The service gets data from smart meter device via MQTT and stores it in an Influx database.
+        The service gets data from smart meter device via MQTT and stores it in Kafka.
     </description>
     <properties>
         <java.version>17</java.version>
@@ -45,9 +45,13 @@
             <version>1.2.2</version>
         </dependency>
         <dependency>
-            <groupId>com.influxdb</groupId>
-            <artifactId>influxdb-client-java</artifactId>
-            <version>6.7.0</version>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -120,7 +124,7 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>mqtt2influxdb-wejago</finalName>
+        <finalName>mqtt2kafka-wejago</finalName>
     </build>
 
     <profiles>
@@ -134,7 +138,6 @@
                         <version>0.8.8</version>
                         <configuration>
                             <excludes>
-                                <exclude>**/*InfluxDBProperties.java</exclude>
                                 <exclude>**/*MqttProperties.java</exclude>
                             </excludes>
                         </configuration>
